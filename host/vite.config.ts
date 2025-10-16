@@ -1,24 +1,25 @@
-// import { NativeFederationTypeScriptHost } from "@module-federation/native-federation-typescript/vite";
-// import { NativeFederationTypeScriptHost } from "@module-federation/native-federation-typescript/vite";
+import { NativeFederationTypeScriptHost } from "@module-federation/native-federation-typescript/vite";
 import { federation } from "@module-federation/vite";
+import { ModuleFederationOptions } from "@module-federation/vite/lib/utils/normalizeModuleFederationOptions";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import packageJson from "./package.json";
 
+const WITH_TYPES = true;
+
 const moduleFederationConfig = {
   name: "host",
   filename: "remoteEntry.js",
-  // remotes: {
-  //   "@remote": "http://localhost:3000/remoteEntry.js",
-  // },
   remotes: {
-    "@remote": {
-      type: "module",
-      name: "@remote",
-      entry: "http://localhost:3000/remoteEntry.js",
-      entryGlobalName: "@remote",
-      shareScope: "default",
-    },
+    "@remote": WITH_TYPES
+      ? { "@remote": "http://localhost:3000/remoteEntry.js" }
+      : {
+          type: "module",
+          name: "@remote",
+          entry: "http://localhost:3000/remoteEntry.js",
+          entryGlobalName: "@remote",
+          shareScope: "default",
+        },
   },
   shared: {
     react: {
@@ -32,13 +33,15 @@ const moduleFederationConfig = {
       requiredVersion: packageJson.dependencies["react-dom"],
     },
   },
-};
+} as ModuleFederationOptions;
 
 export default defineConfig({
   plugins: [
     react(),
     federation(moduleFederationConfig),
-    // NativeFederationTypeScriptHost({ moduleFederationConfig }),
+    WITH_TYPES
+      ? NativeFederationTypeScriptHost({ moduleFederationConfig })
+      : null,
   ],
   server: { port: 3001 },
 });
