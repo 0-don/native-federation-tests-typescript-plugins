@@ -1,3 +1,4 @@
+import { NativeFederationTypeScriptHost } from "@module-federation/native-federation-typescript/vite";
 import { federation } from "@module-federation/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
@@ -7,13 +8,7 @@ const moduleFederationConfig = {
   name: "moduleFederationHost",
   filename: "remoteEntry.js",
   remotes: {
-    moduleFederationTypescript: {
-      type: "module",
-      name: "moduleFederationTypescript",
-      entry: "http://localhost:3000/remoteEntry.js",
-      entryGlobalName: "moduleFederationTypescript",
-      shareScope: "default",
-    },
+    moduleFederationTypescript: "http://localhost:3000/remoteEntry.js",
   },
   shared: {
     react: {
@@ -31,10 +26,9 @@ const moduleFederationConfig = {
 
 export default defineConfig({
   plugins: [
-    federation(moduleFederationConfig),
-    // NativeFederationTypeScriptHost({ moduleFederationConfig }),
-    // NativeFederationTestsHost({ moduleFederationConfig }),
     react(),
+    federation(moduleFederationConfig),
+    NativeFederationTypeScriptHost({ moduleFederationConfig }),
   ],
   build: {
     modulePreload: false,
@@ -42,8 +36,5 @@ export default defineConfig({
   },
   server: {
     port: 3001,
-  },
-  test: {
-    environment: "jsdom",
   },
 });
