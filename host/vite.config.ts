@@ -1,25 +1,32 @@
 import { NativeFederationTypeScriptHost } from "@module-federation/native-federation-typescript/vite";
 import { federation } from "@module-federation/vite";
-import { ModuleFederationOptions } from "@module-federation/vite/lib/utils/normalizeModuleFederationOptions";
+import {
+  ModuleFederationOptions,
+  RemoteObjectConfig,
+} from "@module-federation/vite/lib/utils/normalizeModuleFederationOptions";
 import react from "@vitejs/plugin-react-swc";
 import { defineConfig } from "vite";
 import packageJson from "./package.json";
 
 const WITH_TYPES = false;
 
+const types: Record<string, string> = {
+  "@remote": "http://localhost:3000/remoteEntry.js",
+};
+
+const noTypes: RemoteObjectConfig = {
+  type: "module",
+  name: "@remote",
+  entry: "http://localhost:3000/remoteEntry.js",
+  entryGlobalName: "@remote",
+  shareScope: "default",
+};
+
 const moduleFederationConfig = {
   name: "host",
   filename: "remoteEntry.js",
   remotes: {
-    "@remote": WITH_TYPES
-      ? { "@remote": "http://localhost:3000/remoteEntry.js" }
-      : {
-          type: "module",
-          name: "@remote",
-          entry: "http://localhost:3000/remoteEntry.js",
-          entryGlobalName: "@remote",
-          shareScope: "default",
-        },
+    "@remote": WITH_TYPES ? types : noTypes,
   },
   shared: {
     react: {
