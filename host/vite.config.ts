@@ -4,11 +4,16 @@ import { defineConfig } from "vite";
 import packageJson from "./package.json";
 
 const moduleFederationConfig = {
-  name: "moduleFederationTypescript",
+  name: "moduleFederationHost",
   filename: "remoteEntry.js",
-  exposes: {
-    "./button": "./src/components/button",
-    "./anotherButton": "./src/components/anotherButton",
+  remotes: {
+    moduleFederationTypescript: {
+      type: "module",
+      name: "moduleFederationTypescript",
+      entry: "http://localhost:3000/remoteEntry.js",
+      entryGlobalName: "moduleFederationTypescript",
+      shareScope: "default",
+    },
   },
   shared: {
     react: {
@@ -25,12 +30,20 @@ const moduleFederationConfig = {
 };
 
 export default defineConfig({
-  plugins: [react(), federation(moduleFederationConfig)],
-  server: {
-    port: 3000,
-  },
+  plugins: [
+    federation(moduleFederationConfig),
+    // NativeFederationTypeScriptHost({ moduleFederationConfig }),
+    // NativeFederationTestsHost({ moduleFederationConfig }),
+    react(),
+  ],
   build: {
+    modulePreload: false,
     target: "esnext",
-    minify: false,
+  },
+  server: {
+    port: 3001,
+  },
+  test: {
+    environment: "jsdom",
   },
 });
