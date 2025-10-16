@@ -11,7 +11,7 @@ const moduleFederationConfig = {
   filename: "remoteEntry.js",
   exposes: {
     "./button": "./src/components/button",
-    "./anotherButton": "./src/components/anotherButton",
+    "./another-Button": "./src/components/another-button",
   },
   shared: {
     react: {

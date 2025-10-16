@@ -1,3 +1,5 @@
+import { NativeFederationTypeScriptHost } from "@module-federation/native-federation-typescript/vite";
+// import { NativeFederationTypeScriptHost } from "@module-federation/native-federation-typescript/vite";
 import { federation } from "@module-federation/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
@@ -36,13 +38,7 @@ export default defineConfig({
   plugins: [
     react(),
     federation(moduleFederationConfig),
-    // NativeFederationTypeScriptHost({ moduleFederationConfig }),
+    NativeFederationTypeScriptHost({ moduleFederationConfig }),
   ],
-  build: {
-    modulePreload: false,
-    target: "esnext",
-  },
-  server: {
-    port: 3001,
-  },
+  server: { port: 3001 },
 });
