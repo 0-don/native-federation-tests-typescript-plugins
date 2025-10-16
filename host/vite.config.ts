@@ -5,7 +5,7 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import packageJson from "./package.json";
 
-const WITH_TYPES = true;
+const WITH_TYPES = false;
 
 const moduleFederationConfig = {
   name: "host",
