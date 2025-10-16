@@ -1,5 +1,5 @@
 {
-  "name": "native-federation-tests-typescript-host",
+  "name": "host",
   "type": "module",
   "dependencies": {
     "react": "19.2.0",
