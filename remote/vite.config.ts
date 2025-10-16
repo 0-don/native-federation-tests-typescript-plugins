@@ -7,11 +7,11 @@ import { defineConfig } from "vite";
 import packageJson from "./package.json";
 
 const moduleFederationConfig = {
-  name: "moduleFederationTypescript",
+  name: "remote",
   filename: "remoteEntry.js",
   exposes: {
     "./button": "./src/components/button",
-    "./another-Button": "./src/components/another-button",
+    "./another-button": "./src/components/another-button",
   },
   shared: {
     react: {

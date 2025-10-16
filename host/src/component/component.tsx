@@ -1,5 +1,5 @@
-import { AnotherButton } from 'moduleFederationTypescript/anotherButton';
-import Button from 'moduleFederationTypescript/button';
+import { AnotherButton } from "@remote/another-button";
+import Button from "@remote/button";
 
 const Component = () => (
   <div>
