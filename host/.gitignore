@@ -3,3 +3,4 @@ dist
 .DS_Store
 __mocks__
 @mf-types
+package-lock.json
