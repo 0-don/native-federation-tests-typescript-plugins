@@ -1,0 +1,26 @@
+{
+  "name": "native-federation-tests-typescript-plugins",
+  "private": true,
+  "ignored": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start:webpack": "concurrently \"pnpm --filter native-federation-tests-typescript-remote dev:webpack\" \"wait-on http://localhost:3000 && pnpm --filter native-federation-tests-typescript-host dev:webpack\"",
+    "start:vite": "concurrently \"pnpm --filter native-federation-tests-typescript-remote dev:vite\" \"wait-on http://localhost:3000 && pnpm --filter native-federation-tests-typescript-host dev:vite\"",
+    "start:rspack": "concurrently \"pnpm --filter native-federation-tests-typescript-remote dev:rspack\" \"wait-on http://localhost:3000 && pnpm --filter native-federation-tests-typescript-host dev:rspack\"",
+    "remote:webpack": "pnpm --filter native-federation-tests-typescript-remote dev:webpack",
+    "remote:vite": "pnpm --filter native-federation-tests-typescript-remote dev:vite",
+    "remote:rspack": "pnpm --filter native-federation-tests-typescript-remote dev:rspack",
+    "host:webpack": "pnpm --filter native-federation-tests-typescript-host dev:webpack",
+    "host:vite": "pnpm --filter native-federation-tests-typescript-host dev:vite",
+    "host:rspack": "pnpm --filter native-federation-tests-typescript-host dev:rspack"
+  },
+  "workspaces": [
+    "remote",
+    "host"
+  ],
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "prettier": "^3.6.2",
+    "wait-on": "7.2.0"
+  }
+}
