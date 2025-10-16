@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import Component from './component/Component';
+import Component from './component/component';
 
 const container = document.getElementById('root');
 if (!container) throw new Error('Root container missing in host');

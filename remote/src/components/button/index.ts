@@ -1,5 +1,5 @@
-import Button from './Button';
-import Inner from './Inner/Inner';
+import Button from './button';
+import Inner from './inner/inner';
 
 export default Button;
 export { Inner };
