@@ -8,10 +8,10 @@
   "devDependencies": {
     "@module-federation/native-federation-typescript": "0.6.2",
     "@module-federation/vite": "1.8.1",
-    "@types/node": "^24.8.0",
+    "@types/node": "24.8.0",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
-    "@vitejs/plugin-react-swc": "^4.1.0",
+    "@vitejs/plugin-react-swc": "4.1.0",
     "concurrently": "9.2.1",
     "prettier": "3.6.2",
     "typescript": "5.9.3",
