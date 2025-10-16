@@ -6,7 +6,7 @@ import { defineConfig } from "vite";
 import packageJson from "./package.json";
 
 const moduleFederationConfig = {
-  name: "moduleFederationHost",
+  name: "host",
   filename: "remoteEntry.js",
   remotes: {
     "@remote": "http://localhost:3000/remoteEntry.js",
