@@ -8,13 +8,11 @@ import react from "@vitejs/plugin-react-swc";
 import { defineConfig } from "vite";
 import packageJson from "./package.json";
 
-const WITH_TYPES = false;
+const WITH_TYPES = true;
 
-const types: Record<string, string> = {
-  "@remote": "http://localhost:3000/remoteEntry.js",
-};
+const remoteEntry = "http://localhost:3000/remoteEntry.js";
 
-const noTypes: RemoteObjectConfig = {
+const remoteEntryTyped: RemoteObjectConfig = {
   type: "module",
   name: "@remote",
   entry: "http://localhost:3000/remoteEntry.js",
@@ -26,7 +24,7 @@ const moduleFederationConfig = {
   name: "host",
   filename: "remoteEntry.js",
   remotes: {
-    "@remote": WITH_TYPES ? types : noTypes,
+    "@remote": WITH_TYPES ? remoteEntry : remoteEntryTyped,
   },
   shared: {
     react: {
