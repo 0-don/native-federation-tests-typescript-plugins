@@ -1,7 +1,7 @@
 import { NativeFederationTypeScriptHost } from "@module-federation/native-federation-typescript/vite";
 import { federation } from "@module-federation/vite";
 import { ModuleFederationOptions } from "@module-federation/vite/lib/utils/normalizeModuleFederationOptions";
-import react from '@vitejs/plugin-react-swc'
+import react from "@vitejs/plugin-react-swc";
 import { defineConfig } from "vite";
 import packageJson from "./package.json";
 
@@ -24,12 +24,10 @@ const moduleFederationConfig = {
   shared: {
     react: {
       singleton: true,
-      eager: true,
       requiredVersion: packageJson.dependencies.react,
     },
     "react-dom": {
       singleton: true,
-      eager: true,
       requiredVersion: packageJson.dependencies["react-dom"],
     },
   },
