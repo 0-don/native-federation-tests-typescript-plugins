@@ -3,6 +3,7 @@ import { federation } from "@module-federation/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import packageJson from "./package.json";
+import { ModuleFederationOptions } from "@module-federation/vite/lib/utils/normalizeModuleFederationOptions";
 
 const moduleFederationConfig = {
   name: "remote",
@@ -23,7 +24,7 @@ const moduleFederationConfig = {
       requiredVersion: packageJson.dependencies["react-dom"],
     },
   },
-};
+} as ModuleFederationOptions;
 
 export default defineConfig({
   plugins: [
