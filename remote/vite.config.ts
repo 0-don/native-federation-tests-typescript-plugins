@@ -1,6 +1,6 @@
 import { NativeFederationTypeScriptRemote } from "@module-federation/native-federation-typescript/vite";
 import { federation } from "@module-federation/vite";
-import react from "@vitejs/plugin-react";
+import react from '@vitejs/plugin-react-swc'
 import { defineConfig } from "vite";
 import packageJson from "./package.json";
 import { ModuleFederationOptions } from "@module-federation/vite/lib/utils/normalizeModuleFederationOptions";
