@@ -4,3 +4,4 @@ dist
 __mocks__
 @mf-types
 package-lock.json
+.__mf__temp
