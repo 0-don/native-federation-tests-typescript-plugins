@@ -12,11 +12,11 @@ const moduleFederationConfig = {
     "@remote": "http://localhost:3000/remoteEntry.js",
   },
   // remotes: {
-  //   moduleFederationTypescript: {
+  //   "@remote": {
   //     type: "module",
-  //     name: "moduleFederationTypescript",
+  //     name: "@remote",
   //     entry: "http://localhost:3000/remoteEntry.js",
-  //     entryGlobalName: "moduleFederationTypescript",
+  //     entryGlobalName: "@remote",
   //     shareScope: "default",
   //   },
   // },
